@@ -19,7 +19,7 @@ export default {
                         return({
                             ok: true,
                             message: 'token generated',
-                            newToken
+                            token: newToken
                         });
                     } else {
                         return({
@@ -125,7 +125,7 @@ export default {
 
                 try {
                     await User.update(updatedUser, {where: {uniqueString: args.confirmString}});
-                    let token = signToken(user.get({plain: true}));
+                    let token = utils.signToken(user.get({plain: true}));
                     return({
                         ok: true,
                         message: 'Login Successful',
@@ -197,7 +197,7 @@ export default {
             let user;
 
             try {
-                user = await User.findOne({where: {email: args.resetString}})
+                user = await User.findOne({where: {uniqueString: args.resetString}})
             } catch (e) {
                 return({
                     ok: false,

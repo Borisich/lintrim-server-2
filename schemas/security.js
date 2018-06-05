@@ -16,6 +16,6 @@ type Mutation {
   confirmEmail(confirmString: String!): Response
   login(email: String!, password: String!): Response
   resetPassword(resetString: String!, password: String!): Response
-  updatePassword(oldPassword: String!, newPassword: String!): Response
+  updatePassword(oldPassword: String!, newPassword: String!, token: String!): Response
   recoverPassword(email: String!, emailURL: String): Response
 }`

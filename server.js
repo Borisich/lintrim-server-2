@@ -34,9 +34,9 @@ router.post(qraphqlEndpoint, koaBody(), graphqlKoa({ schema, context: { models }
 router.get(qraphqlEndpoint, graphqlKoa({ schema, context: { models } }));
 router.get('/graphiql', graphiqlKoa({ endpointURL: qraphqlEndpoint }));
 
-//app.use(cors2(koaOptions));
 app.use(router.routes());
 app.use(router.allowedMethods());
+//app.use(cors2(koaOptions));
 
 models.sequelize.sync({force: false}).then(() => {
     console.log('connected to DB');
